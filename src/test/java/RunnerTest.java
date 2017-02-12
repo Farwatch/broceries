@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by nick on 12/02/17.
  */
-public class HelloWorldTest {
+public class RunnerTest {
 
     @Test
     public void shouldBeTrue(){
