@@ -9,3 +9,9 @@
 # Maven
 log/
 target/
+src/main/resources/static/built/
+
+# Node
+src/main/js/node/
+src/main/js/node_modules/
+*.log
