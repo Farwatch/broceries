@@ -1,0 +1,19 @@
+[ignore]
+.*/node_modules/stylelint/.*
+.*/node_modules/expect-jsx/.*
+.*/node_modules/react-side-effect/.*
+.*/.gradle/.*
+.*/build/.*
+.*/tools/.*
+*.scss
+
+[include]
+./src/*.js
+
+[libs]
+flow-typed
+
+[options]
+emoji=true
+module.name_mapper='^\(\/?.*\)$' -> '<PROJECT_ROOT>/singlePageApp/\1'
+module.name_mapper='.*\(.scss\)' -> 'empty/object'
