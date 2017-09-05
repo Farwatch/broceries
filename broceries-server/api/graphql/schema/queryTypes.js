@@ -6,6 +6,7 @@ import graphql, {
     GraphQLID
 } from 'graphql'
 import { RecipeNameType, RecipeDetailType } from './recipeTypes'
+import { recipeNameModel } from '../../models/recipeModels.js'
 
 const queryType = new GraphQLObjectType({
     name: 'query',
@@ -13,20 +14,30 @@ const queryType = new GraphQLObjectType({
         return {
             recipes: {
                 type: new GraphQLList(RecipeNameType),
-                resolve: () => [
-                    {
-                        name: 'Gumbo no. 5',
-                        id: 1
-                    },
-                    {
-                        name: 'Some sewage',
-                        id: 2
-                    },
-                    {
-                        name: 'Purple Drank',
-                        id: 3
-                    }
-                ]
+                resolve: () =>
+                    // {
+                    //     name: 'Gumbo no. 5',
+                    //     id: 1
+                    // },
+                    // {
+                    //     name: 'Some sewage',
+                    //     id: 2
+                    // },
+                    // {
+                    //     name: 'Purple Drank',
+                    //     id: 3
+                    // }
+                    new Promise(
+                        (resolve, reject) => {
+                            recipeNameModel.find((err, recipeNames) => {
+                                if (err) {
+                                    reject(err)
+                                } else {
+                                    resolve(recipeNames)
+                                }
+                            })
+                        }
+                    )
             },
             recipe: {
                 type: RecipeDetailType,
