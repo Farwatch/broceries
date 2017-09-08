@@ -1,8 +1,35 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
+import { render } from 'react-dom'
+
+import { Provider } from 'react-redux'
+import store from './app.store'
+
+import { BrowserRouter } from 'react-router-dom'
+import Routes from './app.routes'
+
 import registerServiceWorker from './registerServiceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+import './index.css'
+
+const main = () => {
+    render(
+        <Provider store={store}>
+            <BrowserRouter>
+                <Routes />
+            </BrowserRouter>
+        </Provider>,
+        document.getElementById('root')
+    )
+}
+
+const checkDomLoaded = () => {
+    if(document.getElementById('root') === null){
+        //stupid code to make stupid IE work
+        setTimeout(checkDomLoaded, 100)
+    }else {
+        main()
+    }
+}
+
+checkDomLoaded()
 registerServiceWorker()
