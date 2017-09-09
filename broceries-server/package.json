@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,./yarn.lock --copy-files",
-    "start": "babel-watch server.js"
+    "start": "babel-watch server.js",
+    "json:server": "json-server --watch db.json"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -19,9 +20,11 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.4",
     "express-graphql": "^0.6.11",
     "graphql": "^0.11.2",
+    "json-server": "^0.12.0",
     "mongoose": "^4.11.10",
     "morgan": "^1.8.2"
   }

@@ -1,0 +1,42 @@
+{
+    "recipes": [
+        {
+            "id": 1,
+            "name": "Gumbo no. 5",
+            "cookingTime": 5,
+            "placeOfOrigin": "Loubegaville",
+            "ingredients": [
+                "Monica",
+                "Erica",
+                "Tina",
+                "Rita",
+                "Sandra",
+                "Mary",
+                "Jessica",
+                "YOU"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Some sewage",
+            "cookingTime": 120,
+            "placeOfOrigin": "The sewers",
+            "ingredients": [
+                "Used condom",
+                "Balled up tissue",
+                "Syringe",
+                "Blinky"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Purple Drank",
+            "cookingTime": 1,
+            "placeOfOrigin": "Harlem or somewhere",
+            "ingredients": [
+                "Purple",
+                "Drank"
+            ]
+        }
+    ]
+}
