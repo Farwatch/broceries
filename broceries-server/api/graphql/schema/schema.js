@@ -10,7 +10,7 @@ import graphql, {
 import axios from 'axios'
 // import { recipeNameModel } from '../../models/recipeModels.js'
 
-const queryType = new GraphQLObjectType({
+const query = new GraphQLObjectType({
     name: 'Query',
     fields: () => ({
         recipes: {
@@ -57,6 +57,55 @@ const RecipeDetailType = new GraphQLObjectType({
     }
 })
 
+const mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addRecipe: {
+            type: RecipeNameType,
+            args: {
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                cookingTime: { type: new GraphQLNonNull(GraphQLInt) },
+                placeOfOrigin: { type: new GraphQLNonNull(GraphQLString) },
+                ingredients: { type: new GraphQLList(GraphQLString) }
+            },
+            resolve: (parentValue, { name, cookingTime, placeOfOrigin, ingredients }) => 
+                axios.post('http://localhost:3000/recipes', {
+                    name,
+                    cookingTime,
+                    placeOfOrigin,
+                    ingredients
+                }).then(result => result.data)
+        },
+        deleteRecipe: {
+            type: RecipeNameType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLID) }
+            },
+            resolve: (parentValue, { id }) => 
+                axios.delete(`http://localhost:3000/recipes/${id}`)
+                    .then(result => result.data)
+        },
+        editRecipe: {
+            type: RecipeDetailType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLID) },
+                name: { type: GraphQLString },
+                cookingTime: { type: GraphQLInt },
+                placeOfOrigin: { type: GraphQLString },
+                ingredients: { type: new GraphQLList(GraphQLString) }
+            },
+            resolve: (parentvalue, { id, name, cookingTime, placeOfOrigin, ingredients }) =>
+                axios.patch(`http://localhost:3000/recipes/${id}`, {
+                    name,
+                    cookingTime,
+                    placeOfOrigin,
+                    ingredients
+                }).then(result => result.data)
+        }
+    }
+})
+
 export default new GraphQLSchema({
-    query: queryType
+    query,
+    mutation
 })

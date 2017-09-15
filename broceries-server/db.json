@@ -1,42 +1,114 @@
 {
-    "recipes": [
-        {
-            "id": 1,
-            "name": "Gumbo no. 5",
-            "cookingTime": 5,
-            "placeOfOrigin": "Loubegaville",
-            "ingredients": [
-                "Monica",
-                "Erica",
-                "Tina",
-                "Rita",
-                "Sandra",
-                "Mary",
-                "Jessica",
-                "YOU"
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Some sewage",
-            "cookingTime": 120,
-            "placeOfOrigin": "The sewers",
-            "ingredients": [
-                "Used condom",
-                "Balled up tissue",
-                "Syringe",
-                "Blinky"
-            ]
-        },
-        {
-            "id": 3,
-            "name": "Purple Drank",
-            "cookingTime": 1,
-            "placeOfOrigin": "Harlem or somewhere",
-            "ingredients": [
-                "Purple",
-                "Drank"
-            ]
-        }
-    ]
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Gumbo no. 5",
+      "cookingTime": 5,
+      "placeOfOrigin": "The liquor store around the corner",
+      "ingredients": [
+        "Monica",
+        "Erica",
+        "Tina",
+        "Rita",
+        "Sandra",
+        "Mary",
+        "Jessica",
+        "YOU"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Some sewage",
+      "cookingTime": 120,
+      "placeOfOrigin": "The sewers",
+      "ingredients": [
+        "Used condom",
+        "Balled up tissue",
+        "Syringe",
+        "Blinky the fish"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Purple Drank",
+      "cookingTime": 1,
+      "placeOfOrigin": "Harlem or somewhere",
+      "ingredients": [
+        "Purple",
+        "Drank"
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Monica",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 2,
+      "name": "Erica",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 3,
+      "name": "Rita",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 4,
+      "name": "Tina",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 5,
+      "name": "Sandra",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 6,
+      "name": "Mary",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 7,
+      "name": "Jessica",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 8,
+      "name": "YOU",
+      "category": "Bega's Bitches"
+    },
+    {
+      "id": 9,
+      "name": "Used condom",
+      "category": "Toiletries"
+    },
+    {
+      "id": 10,
+      "name": "Balled up tissue",
+      "category": "Toiletries"
+    },
+    {
+      "id": 11,
+      "name": "Syringe",
+      "category": "Medical supplies"
+    },
+    {
+      "id": 12,
+      "name": "Blinky the fish",
+      "category": "Seafood"
+    },
+    {
+      "id": 13,
+      "name": "Purple",
+      "category": "Colours"
+    },
+    {
+      "id": 14,
+      "name": "Drank",
+      "category": "Beverages"
+    }
+  ]
 }
