@@ -4,41 +4,28 @@
       "id": 1,
       "name": "Gumbo no. 5",
       "cookingTime": 5,
-      "placeOfOrigin": "The liquor store around the corner",
-      "ingredients": [
-        "Monica",
-        "Erica",
-        "Tina",
-        "Rita",
-        "Sandra",
-        "Mary",
-        "Jessica",
-        "YOU"
-      ]
+      "placeOfOrigin": "The liquor store around the corner"
     },
     {
       "id": 2,
       "name": "Some sewage",
       "cookingTime": 120,
-      "placeOfOrigin": "The sewers",
-      "ingredients": [
-        "Used condom",
-        "Balled up tissue",
-        "Syringe",
-        "Blinky the fish"
-      ]
+      "placeOfOrigin": "The sewers"
     },
     {
       "id": 3,
       "name": "Purple Drank",
       "cookingTime": 1,
-      "placeOfOrigin": "Harlem or somewhere",
-      "ingredients": [
-        "Purple",
-        "Drank"
-      ]
+      "placeOfOrigin": "Harlem or somewhere"
+    },
+    {
+      "name": "TunaPastaPesto",
+      "cookingTime": 40,
+      "placeOfOrigin": "Uncle Paddy",
+      "id": 4
     }
   ],
+
   "ingredients": [
     {
       "id": 1,
@@ -109,6 +96,92 @@
       "id": 14,
       "name": "Drank",
       "category": "Beverages"
+    },
+    {
+      "id": 15,
+      "name": "Tuna",
+      "category": "Seafood"
+    },
+    {
+      "id": 16,
+      "name": "Pasta",
+      "category": "Dried stuff"
+    },
+    {
+      "id": 17,
+      "name": "Pesto",
+      "category": "Jars"
+    }
+  ],
+
+  "recipes_ingredients": [
+    {
+      "recipeId": 1,
+      "ingredientId": 1
+    },
+    {
+      "recipeId": 1,
+      "ingredientId": 2
+    },
+    {
+      "recipeId": 1,
+      "ingredientId": 3
+    },
+    {
+      "recipeId": 1,
+      "ingredientId": 4
+    },
+    {
+      "recipeId": 1,
+      "ingredientId": 5
+    },
+    {
+      "recipeId": 1,
+      "ingredientId": 6
+    },
+    {
+      "recipeId": 1,
+      "ingredientId": 7
+    },
+    {
+      "recipeId": 1,
+      "ingredientId": 8
+    },
+    {
+      "recipeId": 2,
+      "ingredientId": 9
+    },
+    {
+      "recipeId": 2,
+      "ingredientId": 10
+    },
+    {
+      "recipeId": 2,
+      "ingredientId": 11
+    },
+    {
+      "recipeId": 2,
+      "ingredientId": 12
+    },
+    {
+      "recipeId": 3,
+      "ingredientId": 13
+    },
+    {
+      "recipeId": 3,
+      "ingredientId": 14
+    },
+    {
+      "recipeId": 4,
+      "ingredientId": 15
+    },
+    {
+      "recipeId": 4,
+      "ingredientId": 16
+    },
+    {
+      "recipeId": 4,
+      "ingredientId": 17
     }
   ]
 }

@@ -8,7 +8,6 @@ import graphql, {
     GraphQLNonNull
 } from 'graphql'
 import axios from 'axios'
-// import { recipeNameModel } from '../../models/recipeModels.js'
 
 const query = new GraphQLObjectType({
     name: 'Query',
@@ -29,6 +28,24 @@ const query = new GraphQLObjectType({
             },
             resolve: (parentValue, { id }) =>
                 axios.get(`http://localhost:3000/recipes/${id}`)
+                    .then(response => response.data)
+        },
+        ingredients: {
+            type: new GraphQLList(IngredientType),
+            resolve: (parentValue, { id }) =>
+                axios.get(`http://localhost:3000/ingredients`)
+                    .then(response => response.data)
+        },
+        ingredient: {
+            type: IngredientType,
+            args: {
+                id: {
+                    name: 'ingredientId',
+                    type: new GraphQLNonNull(GraphQLID)
+                }
+            },
+            resolve: (parentValue, { id }) =>
+                axios.get(`http://localhost:3000/ingredients/${id}`)
                     .then(response => response.data)
         }
     })
@@ -52,7 +69,29 @@ const RecipeDetailType = new GraphQLObjectType({
             name: { type: GraphQLString },
             cookingTime: { type: GraphQLInt },
             placeOfOrigin: { type: GraphQLString },
-            ingredients: { type: new GraphQLList(GraphQLString) }
+            ingredients: {
+                type: new GraphQLList(IngredientType),
+                resolve: (parentValue, args) => 
+                    axios.get(`http://localhost:3000/recipes_ingredients?recipeId=${parentValue.id}`)
+                        .then(response => response.data.map(obj => obj.ingredientId))
+                        .then(ingredientIds => {
+                            const queryParams = ingredientIds.reduce((prev, curr) => prev + `id=${curr}&`, '')
+                            return axios.get(`http://localhost:3000/ingredients?${queryParams}`)
+                                .then(response => response.data)
+                        })
+            }
+        }
+    }
+})
+
+const IngredientType = new GraphQLObjectType({
+    name: 'Ingredient',
+    fields: () => {
+        return {
+            id: { type: GraphQLID },
+            name: { type: GraphQLString },
+            category: { type: GraphQLString },
+            recipes: { type: new GraphQLList(RecipeDetailType) }
         }
     }
 })
@@ -68,13 +107,9 @@ const mutation = new GraphQLObjectType({
                 placeOfOrigin: { type: new GraphQLNonNull(GraphQLString) },
                 ingredients: { type: new GraphQLList(GraphQLString) }
             },
-            resolve: (parentValue, { name, cookingTime, placeOfOrigin, ingredients }) => 
-                axios.post('http://localhost:3000/recipes', {
-                    name,
-                    cookingTime,
-                    placeOfOrigin,
-                    ingredients
-                }).then(result => result.data)
+            resolve: (parentValue, args) => 
+                axios.post('http://localhost:3000/recipes', args)
+                    .then(response => response.data)
         },
         deleteRecipe: {
             type: RecipeNameType,
@@ -83,7 +118,7 @@ const mutation = new GraphQLObjectType({
             },
             resolve: (parentValue, { id }) => 
                 axios.delete(`http://localhost:3000/recipes/${id}`)
-                    .then(result => result.data)
+                    .then(response => response.data)
         },
         editRecipe: {
             type: RecipeDetailType,
@@ -94,13 +129,9 @@ const mutation = new GraphQLObjectType({
                 placeOfOrigin: { type: GraphQLString },
                 ingredients: { type: new GraphQLList(GraphQLString) }
             },
-            resolve: (parentvalue, { id, name, cookingTime, placeOfOrigin, ingredients }) =>
-                axios.patch(`http://localhost:3000/recipes/${id}`, {
-                    name,
-                    cookingTime,
-                    placeOfOrigin,
-                    ingredients
-                }).then(result => result.data)
+            resolve: (parentvalue, args) =>
+                axios.patch(`http://localhost:3000/recipes/${args.id}`, args)
+                    .then(response => response.data)
         }
     }
 })
